@@ -55,9 +55,9 @@ class Portal extends pc.ScriptType {
     // 获取主相机相对于门A的位置
     const tempVec3 = new pc.Vec3().copy(this.mainCamera.getPosition());
     tempVec3.sub(this.portalA.getPosition());
+    // 此时再以传送门A为原点，绕y轴旋转180°可以将物体移动到传送门另一侧
     // 相对于传送门B的相同位置放置虚拟相机
     this.virtualPerson.setPosition(this.portalB.getPosition().clone().add(tempVec3));
-    // this.virtualPerson.setEulerAngles(this.mainCamera.getEulerAngles().mulScalar(-1));
     // 尝试将rendertexture应用到物体上
     if (this.sphereA.render) {
       // eslint-disable-next-line no-restricted-syntax
