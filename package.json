@@ -1,0 +1,37 @@
+{
+  "name": "playcanvas-experiment",
+  "version": "1.0.0",
+  "author": "whaojie06@gmail.com",
+  "homepage": "https://playcanvas.com",
+  "description": "some playcanvas experiments",
+  "keywords": [
+    "typescript",
+    "3D",
+    "2D",
+    "VR",
+    "WebGL",
+    "WebGL2",
+    "game",
+    "engine",
+    "HTML5",
+    "browser",
+    "typings"
+  ],
+  "main": "build/main.build.js",
+  "scripts": {
+    "build": "tsc && node node_modules/javascript-obfuscator/bin/javascript-obfuscator temp/main.build.js --config ./obfuscator.js --output ./build/main.build.js",
+    "dev-build": "tsc --outDir ./build/ --outFile ./build/main.build.js",
+    "watch": "tsc --watch",
+    "push": "node node_modules/playcanvas-sync/pcsync.js pushAll --yes",
+    "build-push": "tsc --outDir ./build --outFile ./build/main.build.js && node node_modules/playcanvas-sync/pcsync.js pushAll --yes",
+    "watch-push": "tsc --outDir ./build --outFile ./build/main.build.js && tsc-watch --outDir ./build --outFile ./build/main.build.js --onSuccess \"node node_modules/playcanvas-sync/pcsync.js pushAll --yes\""
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "playcanvas-sync": "git+https://github.com/playcanvas/playcanvas-sync.git",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "tsc-watch": "^4.6.0"
+  }
+}
